@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) 2008-2020 the Urho3D project.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1447,7 +1447,7 @@ ea::vector<Node*> Node::GetChildrenWithTag(const ea::string& tag, bool recursive
 
 Node* Node::GetChild(unsigned index) const
 {
-    return index < children_.size() ? children_[index] : nullptr;
+    return index < children_.size() ? children_[index].Get() : nullptr;
 }
 
 Node* Node::GetChild(const ea::string& name, bool recursive) const

@@ -46,7 +46,8 @@ SceneView::SceneView(Context* context, const IntRect& rect)
     texture_ = SharedPtr<Texture2D>(new Texture2D(context));
     // Make sure viewport is not using default renderpath. That would cause issues when renderpath
     // is shared with other viewports (like in resource inspector).
-    viewport_->SetRenderPath(viewport_->GetRenderPath()->Clone());
+    auto renderPath = viewport_->GetRenderPath()->Clone();
+    viewport_->SetRenderPath(renderPath);
     SetSize(rect);
 }
 

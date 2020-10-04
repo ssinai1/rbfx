@@ -716,7 +716,7 @@ AnimationState* AnimatedModel::GetAnimationState(StringHash animationNameHash) c
 
 AnimationState* AnimatedModel::GetAnimationState(unsigned index) const
 {
-    return index < animationStates_.size() ? animationStates_[index] : nullptr;
+    return index < animationStates_.size() ? animationStates_[index].Get() : nullptr;
 }
 
 void AnimatedModel::SetSkeleton(const Skeleton& skeleton, bool createBones)

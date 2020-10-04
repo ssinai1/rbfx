@@ -289,7 +289,7 @@ bool Serializer::WriteVariantData(const Variant& value)
         // Serializing pointers and custom values is not supported. Write null
     case VAR_CUSTOM:
     {
-        if (const Serializable* object = value.GetCustom<SharedPtr<Serializable>>())
+        if (const Serializable* object = value.GetCustom<SharedPtr<Serializable>>().Get())
         {
             WriteUInt(object->GetType().Value());
             return object->Save(*this);

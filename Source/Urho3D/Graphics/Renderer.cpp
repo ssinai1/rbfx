@@ -597,7 +597,7 @@ void Renderer::ApplyShadowMapFilter(View* view, Texture2D* shadowMap, float blur
 
 Viewport* Renderer::GetViewport(unsigned index) const
 {
-    return index < viewports_.size() ? viewports_[index] : nullptr;
+    return index < viewports_.size() ? viewports_[index].Get() : nullptr;
 }
 
 Viewport* Renderer::GetViewportForScene(Scene* scene, unsigned index) const

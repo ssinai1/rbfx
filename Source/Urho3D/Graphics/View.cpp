@@ -2877,7 +2877,7 @@ Technique* View::GetTechnique(Drawable* drawable, Material* material)
         }
 
         // If no suitable technique found, fallback to the last
-        return techniques.size() ? techniques.back().technique_ : nullptr;
+        return techniques.size() ? techniques.back().technique_.Get() : nullptr;
     }
 }
 

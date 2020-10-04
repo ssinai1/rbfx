@@ -263,7 +263,7 @@ public:
     bool HasPass(const ea::string& name) const;
 
     /// Return a pass, or null if not found.
-    Pass* GetPass(unsigned passIndex) const { return passIndex < passes_.size() ? passes_[passIndex] : nullptr; }
+    Pass* GetPass(unsigned passIndex) const { return passIndex < passes_.size() ? passes_[passIndex].Get() : nullptr; }
 
     /// Return a pass by name, or null if not found. This overload should not be called in time-critical rendering loops; use a pre-acquired pass index instead.
     Pass* GetPass(const ea::string& name) const;
@@ -271,7 +271,7 @@ public:
     /// Return a pass that is supported for rendering, or null if not found.
     Pass* GetSupportedPass(unsigned passIndex) const
     {
-        Pass* pass = passIndex < passes_.size() ? passes_[passIndex] : nullptr;
+        Pass* pass = passIndex < passes_.size() ? passes_[passIndex].Get() : nullptr;
         return pass && (!pass->IsDesktop() || desktopSupport_) ? pass : nullptr;
     }
 

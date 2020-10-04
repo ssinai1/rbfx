@@ -137,7 +137,7 @@ void CustomGeometry::ProcessRayQuery(const RayOctreeQuery& query, ea::vector<Ray
 
 Geometry* CustomGeometry::GetLodGeometry(unsigned batchIndex, unsigned level)
 {
-    return batchIndex < geometries_.size() ? geometries_[batchIndex] : nullptr;
+    return batchIndex < geometries_.size() ? geometries_[batchIndex].Get() : nullptr;
 }
 
 unsigned CustomGeometry::GetNumOccluderTriangles()
@@ -722,7 +722,7 @@ unsigned CustomGeometry::GetNumVertices(unsigned index) const
 
 Material* CustomGeometry::GetMaterial(unsigned index) const
 {
-    return index < batches_.size() ? batches_[index].material_ : nullptr;
+    return index < batches_.size() ? batches_[index].material_.Get() : nullptr;
 }
 
 CustomGeometryVertex* CustomGeometry::GetVertex(unsigned geometryIndex, unsigned vertexNum)

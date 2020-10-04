@@ -453,7 +453,7 @@ bool XMLElement::SetVariantValue(const Variant& value)
 
     case VAR_CUSTOM:
     {
-        if (const Serializable* object = value.GetCustom<SharedPtr<Serializable>>())
+        if (const Serializable* object = value.GetCustom<SharedPtr<Serializable>>().Get())
         {
             SetAttribute("type", object->GetTypeName());
             if (!object->SaveXML(*this))

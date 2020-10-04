@@ -215,12 +215,16 @@ public:
         animator_ = node_->CreateComponent<AnimationController>();
 
         auto cache = GetSubsystem<ResourceCache>();
-        model_->SetModel(cache->GetTempResource<Model>(file_path));
+        auto resModel = cache->GetTempResource<Model>(file_path);
+        model_->SetModel(resModel);
 
         ResetNode();
 
         for (auto i = 0; i < materials.size(); i++)
-            model_->SetMaterial(i, cache->GetTempResource<Material>(materials[i]));
+        {
+            auto resMaterial = cache->GetTempResource<Material>(materials[i]);
+            model_->SetMaterial(i, resMaterial);
+        }
     }
 
     void ResetNode()

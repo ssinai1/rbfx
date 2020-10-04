@@ -803,7 +803,7 @@ ea::string ResourceCache::GetResourceFileName(const ea::string& name) const
 
 ResourceRouter* ResourceCache::GetResourceRouter(unsigned index) const
 {
-    return index < resourceRouters_.size() ? resourceRouters_[index] : nullptr;
+    return index < resourceRouters_.size() ? resourceRouters_[index].Get() : nullptr;
 }
 
 ea::string ResourceCache::GetPreferredResourceDir(const ea::string& path) const

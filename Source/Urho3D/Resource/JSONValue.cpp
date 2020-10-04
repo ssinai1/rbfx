@@ -534,7 +534,7 @@ void JSONValue::SetVariantValue(const Variant& variant, Context* context)
 
     case VAR_CUSTOM:
         {
-            if (const Serializable* object = variant.GetCustom<SharedPtr<Serializable>>())
+            if (const Serializable* object = variant.GetCustom<SharedPtr<Serializable>>().Get())
             {
                 JSONValue value;
                 if (object->SaveJSON(value))

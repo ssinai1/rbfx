@@ -1148,19 +1148,19 @@ const TechniqueEntry& Material::GetTechniqueEntry(unsigned index) const
 
 Technique* Material::GetTechnique(unsigned index) const
 {
-    return index < techniques_.size() ? techniques_[index].technique_ : nullptr;
+    return index < techniques_.size() ? techniques_[index].technique_.Get() : nullptr;
 }
 
 Pass* Material::GetPass(unsigned index, const ea::string& passName) const
 {
-    Technique* tech = index < techniques_.size() ? techniques_[index].technique_ : nullptr;
+    Technique* tech = index < techniques_.size() ? techniques_[index].technique_.Get() : nullptr;
     return tech ? tech->GetPass(passName) : nullptr;
 }
 
 Texture* Material::GetTexture(TextureUnit unit) const
 {
     auto i = textures_.find(unit);
-    return i != textures_.end() ? i->second : nullptr;
+    return i != textures_.end() ? i->second.Get() : nullptr;
 }
 
 const Variant& Material::GetShaderParameter(const ea::string& name) const

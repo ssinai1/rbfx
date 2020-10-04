@@ -328,7 +328,7 @@ void StaticModel::ApplyMaterialList(const ea::string& fileName)
 
 Material* StaticModel::GetMaterial(unsigned index) const
 {
-    return index < batches_.size() ? batches_[index].material_ : nullptr;
+    return index < batches_.size() ? batches_[index].material_.Get() : nullptr;
 }
 
 bool StaticModel::IsInside(const Vector3& point) const

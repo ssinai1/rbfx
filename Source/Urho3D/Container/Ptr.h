@@ -160,7 +160,10 @@ public:
     template <class U> bool operator !=(const SharedPtr<U>& rhs) const { return ptr_ != rhs.ptr_; }
 
     /// Convert to a raw pointer.
-    operator T*() const { return ptr_; }    // NOLINT(google-explicit-constructor)
+    operator T*() const & { return ptr_; }    // NOLINT(google-explicit-constructor)
+
+    /// Disallow conversion if the object is an rvalue.
+    operator T*() const && = delete;
 
     /// Swap with another SharedPtr.
     void Swap(SharedPtr& rhs) { ea::swap(ptr_, rhs.ptr_); }

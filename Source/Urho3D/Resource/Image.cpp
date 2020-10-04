@@ -532,7 +532,7 @@ bool Image::BeginLoad(Deserializer& source)
                 // Replace with converted data
                 currentImage->data_ = rgbaData;
                 currentImage->SetMemoryUse(numPixels * 4);
-                currentImage = currentImage->GetNextSibling();
+                currentImage = currentImage->GetNextSibling().Get();
             }
         }
     }

@@ -203,7 +203,7 @@ public:
         if (i != specificEventReceivers_.end())
         {
             auto j = i->second.find(eventType);
-            return j != i->second.end() ? j->second : nullptr;
+            return j != i->second.end() ? j->second.Get() : nullptr;
         }
         else
             return nullptr;
@@ -214,7 +214,7 @@ public:
     {
         auto i = eventReceivers_.find(
             eventType);
-        return i != eventReceivers_.end() ? i->second : nullptr;
+        return i != eventReceivers_.end() ? i->second.Get() : nullptr;
     }
 
     /// Register engine subsystem and cache it's pointer.
